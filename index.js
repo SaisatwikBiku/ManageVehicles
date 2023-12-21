@@ -48,5 +48,33 @@ function clearForm() {
   document.getElementById("vehicleNumber").value = "";
 }
 
+// Function to filter vehicles based on search input
+function filterVehicles() {
+  const searchInput = document.getElementById("search").value.toLowerCase();
+  const filteredVehicles = vehicles.filter(vehicle =>
+    vehicle.name.toLowerCase().includes(searchInput) ||
+    vehicle.type.toLowerCase().includes(searchInput) ||
+    vehicle.num.toLowerCase().includes(searchInput)
+  );
+
+  displayFilteredVehicles(filteredVehicles);
+}
+
+// Function to display filtered vehicles
+function displayFilteredVehicles(filteredVehicles) {
+  const vehicleList = document.getElementById("vehicleList");
+  vehicleList.innerHTML = "";
+
+  filteredVehicles.forEach((vehicle, index) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+      <span>${vehicle.name} - ${vehicle.type} - ${vehicle.num}</span>
+      <button class="delete-btn" onclick="deleteVehicle(${index})">Delete</button>
+    `;
+    vehicleList.appendChild(listItem);
+  });
+}
+
+
 // Initial display of vehicles
 displayVehicles();
