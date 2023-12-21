@@ -24,6 +24,11 @@
       <button type="button" onclick="addVehicle()">Add Vehicle</button>
     </form>
 
+    <div class="search-container">
+      <label for="search">Search Vehicle:</label>
+      <input type="text" id="search" oninput="filterVehicles()">
+    </div>
+
     <ul id="vehicleList"></ul>
   </div>
 
